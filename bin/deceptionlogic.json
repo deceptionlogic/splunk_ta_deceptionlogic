@@ -1,0 +1,6 @@
+{
+	"X-DeceptionLogic-KeyId": "",
+	"X-DeceptionLogic-SecretKey": "",
+	"eventapi_run_time": "1m",
+	"alertapi_run_time": "30s"
+}
