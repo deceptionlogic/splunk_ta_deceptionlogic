@@ -5,7 +5,7 @@ This Splunk App pulls event and alert data from the Deception Logic API.
 ## Install
 
 Place this app on your search head under `$SPLUNK_HOME/etc/apps/`
-Create the index on your indexer, see step #2 under Prerequisite for details.
+Create the index on your indexer, see Create Indexes section below for instructions.
 
 ## Configure
 
@@ -35,7 +35,7 @@ __Note:__ While you can modify the values of the `eventapi_run_time` and `alerta
 
 If you change the duration options above, you will also need to change the interval values in `default/inputs.conf`. In order to avoid dupilicate or missing data issues, the duration options must match with the coorosponding interval values.
 
-## Creat Indexes
+## Create Indexes
 
 Create indexes.conf on your indexer with the default index name "Deceptionlogic" Below is the sample of index:
 
@@ -57,7 +57,7 @@ __**NOTE:__ If you modify any files in the `default` folder, please create the c
 index="deceptionlogic" sourcetype="deceptionlogic_alerts"
 index="deceptionlogic" sourcetype="deceptionlogic_events"
 
-_If you changed indexname or sourcetype, please modify the above query accordingly._
+_If you changed index name or sourcetype, please modify the above query accordingly._
 
 ## Troubleshooting
 
@@ -65,4 +65,4 @@ _If you changed indexname or sourcetype, please modify the above query according
 
 ## Dashboard
 
-1. Select Splunk_TA_deceptionlogic app in the Splunk UI. Go to Dashboards and click on Deception Logic Events.
+1. Select splunk_ta_deceptionlogic app in the Splunk UI. Go to Dashboards and click on __Deception Logic Events__.
