@@ -39,7 +39,6 @@ If you change the duration options above, you will also need to change the inter
 
 Create indexes.conf on your indexer with the default index name "Deceptionlogic" Below is the sample of index:
 
-    ```conf
     [deceptionlogic]
     homePath   = $SPLUNK_DB/deceptionlogic/db
     coldPath   = $SPLUNK_DB/deceptionlogic/colddb 
@@ -48,7 +47,6 @@ Create indexes.conf on your indexer with the default index name "Deceptionlogic"
     frozenTimePeriodInSecs = 86400
     #14 day retention
     #frozenTimePeriodInSecs = 1209600
-    ```
 
 __**NOTE:__ If you change the index name, make sure you update `default/inputs.conf` to reflect the new index name, e.g. `index = <new index name >`
 
