@@ -50,8 +50,6 @@ Create indexes.conf on your indexer with the default index name "Deceptionlogic"
 
 __**NOTE:__ If you change the index name, make sure you update `default/inputs.conf` to reflect the new index name, e.g. `index = <new index name >`
 
-__**NOTE:__ If you modify any files in the `default` folder, please create the copy of the file in local directory and change it in local directory. After completing changes, restart the Splunk process.
-
 ## Viewing data in Splunk
 
 index="deceptionlogic" sourcetype="deceptionlogic_alerts"
