@@ -55,6 +55,7 @@ __**NOTE:__ If you modify any files in the `default` folder, please create the c
 ## Viewing data in Splunk
 
 index="deceptionlogic" sourcetype="deceptionlogic_alerts"
+
 index="deceptionlogic" sourcetype="deceptionlogic_events"
 
 _If you changed index name or sourcetype, please modify the above query accordingly._
