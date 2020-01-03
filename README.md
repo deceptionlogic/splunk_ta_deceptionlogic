@@ -18,14 +18,12 @@ At minimum, and recommended, you only need to add your Deception Logic API key I
 
 __Configuration file: `bin/deceptionlogic.json`__
 
-    ```json
     {
         "X-DeceptionLogic-KeyId": "<your key ID>",
         "X-DeceptionLogic-SecretKey": "<your secret key>",
         "eventapi_run_time": "1m",
         "alertapi_run_time": "30s"
     }
-    ```
 
 Additional options:
 
