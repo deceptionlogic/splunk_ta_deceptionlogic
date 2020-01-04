@@ -1,4 +1,4 @@
-name: Splunk TA Deception Logic
+name: Splunk App Inspect
 
 on: [push]
 
@@ -15,7 +15,7 @@ jobs:
         python-version: 2.7
     - name: Install dependencies
       run: |
-        sudo apt-get install -y libxml2-dev libxslt-dev lib32z1-dev python-lxml wget
+        sudo apt-get install -y libxml2-dev libxslt-dev lib32z1-dev python-lxml python-virtualenv wget
     - name: Inspect package
       run: |
         make package
