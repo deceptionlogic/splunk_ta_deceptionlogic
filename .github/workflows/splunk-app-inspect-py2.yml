@@ -17,7 +17,7 @@ jobs:
       run: |
         sudo apt-get install -y libxml2-dev libxslt-dev lib32z1-dev python-lxml python-virtualenv wget
         pip install --upgrade pip
-        pip install pylint
+        pip install pylint requests
     - name: Lint
       run: make lint
     - name: Inspect package
