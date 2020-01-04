@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 splunk_ta_deceptionlogic.tar.gz
+splunk-appinspect-latest.tar.gz
