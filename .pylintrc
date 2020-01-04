@@ -1,0 +1,2 @@
+[MASTER]
+disable = superfluous-parens,C0301,C0103,W0702,W0621

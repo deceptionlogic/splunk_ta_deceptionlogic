@@ -38,7 +38,7 @@ if __name__ == "__main__":
     except:
         logger = setup_logger(logging.ERROR)
         logger.error("Events Error: Deceptionlogic args file missing : ./%s ", jsonfile)
-        exit()
+        sys.exit()
 
     # parse file
     try:
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     except ValueError as jsonerror:
         logger = setup_logger(logging.ERROR)
         logger.error("Events Error: File %s data read error %s ", jsonfile, jsonerror)
-        exit()
+        sys.exit()
 
     if ("X-DeceptionLogic-KeyId" in args) and ("X-DeceptionLogic-SecretKey" in args):
         keyId = str(args['X-DeceptionLogic-KeyId'])
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     else:
         logger = setup_logger(logging.ERROR)
         logger.error("Events Error: Deceptionlogic args X-DeceptionLogic-KeyId OR/AND X-DeceptionLogic-SecretKey missing in file : ./%s ", jsonfile)
-        exit()
+        sys.exit()
 
     if (keyId and SecretKey):
         headers = {
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         else:
             logger = setup_logger(logging.ERROR)
             logger.error("Events Error: DeceptionLogic API Authentication Failed. Response Code:%s ", response.status_code)
-            exit()
+            sys.exit()
 
         auth = response.json()
         token = auth['token']
@@ -93,11 +93,11 @@ if __name__ == "__main__":
             else:
                 logger = setup_logger(logging.ERROR)
                 logger.error("Events Error: Please enter the eventapi_run_time in deceptionlogic.json in right format (digits + m for months, d for days, s for seconds and h for hours). E.g for 1 min : 1m")
-                exit()
+                sys.exit()
         else:
             logger = setup_logger(logging.ERROR)
             logger.error("Events Error: Please enter the eventapi_run_time in deceptionlogic.json in right format (digits + m for months, d for days, s for seconds and h for hours). E.g for 1 min : 1m")
-            exit()
+            sys.exit()
 
         try:
             eventjson = response.json()
@@ -105,13 +105,13 @@ if __name__ == "__main__":
                 for i in eventjson:
                     ### Send Data to Splunk ###
                     data_j = json.dumps(i)
-                    print data_j
+                    print(data_j)
 
         except ValueError:
             logger = setup_logger(logging.ERROR)
             logger.error("Events API call failed . Please check your authentication key or check with DeceptionLogic Support team. API response code : %s", response.status_code)
-            exit()
+            sys.exit()
     else:
         logger = setup_logger(logging.ERROR)
         logger.error("DeceptionLogic API key ID and Secret Key can not be blank. Please Enter the right keys")
-        exit()
+        sys.exit()
