@@ -1,0 +1,22 @@
+name: Splunk TA Deception Logic
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 2.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 2.7
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y libxml2-dev libxslt-dev lib32z1-dev python-lxml wget
+    - name: Inspect package
+      run: |
+        make package
+        make inspect
