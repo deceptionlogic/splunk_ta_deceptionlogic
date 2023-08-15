@@ -81,7 +81,6 @@ if __name__ == "__main__":
         response = requests.get(
             "https://api.deceptionlogic.com/v0/authenticate",
             headers=headers,
-            verify=False,
         )
         if response.status_code == 200:
             logger = setup_logger(logging.INFO)
@@ -119,7 +118,7 @@ if __name__ == "__main__":
                 url = "https://api.deceptionlogic.com/v0/alerts?from={0}".format(
                     runtime
                 )
-                response = requests.get(url, headers=headers, verify=False)
+                response = requests.get(url, headers=headers)
             else:
                 logger = setup_logger(logging.ERROR)
                 logger.error(
