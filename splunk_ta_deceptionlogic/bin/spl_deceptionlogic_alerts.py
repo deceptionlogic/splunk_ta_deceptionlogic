@@ -7,6 +7,24 @@ import json
 import logging
 import logging.handlers
 import requests
+from configparser import ConfigParser
+from splunk.clilib import cli_common as cli  # pylint: disable=import-error
+
+
+def get_app_version():
+    """
+    Return current app version
+    """
+    bin_dir = os.path.dirname(os.path.abspath(__file__))
+    app_conf_path = os.path.join(bin_dir, "..", "default", "app.conf")
+    version = "0.0.0"
+    config = ConfigParser()
+    config.read(app_conf_path)
+    # Get the version value from the [launcher] section
+    if config.has_section("launcher") and config.has_option("launcher", "version"):
+        version = config.get("launcher", "version")
+
+    return version
 
 
 def setup_logger(level):
@@ -42,9 +60,17 @@ def setup_logger(level):
 ### MAIN FUNCTION ###
 
 if __name__ == "__main__":
+    ## get splunk version
+    splunk_version = cli.getConfKeyValue("app", "launcher", "version")
+    ## get splunk app version
+    app_version = get_app_version()
+    ## compose ua string
+    user_agent = "Deception Logic Spunk App/{} (Splunk {}; Requests {})".format(
+        app_version, splunk_version, requests.__version__
+    )
+
     ## CHECK For the deceptionlogic.json file exists ##
-    filename = "deceptionlogic.json"
-    jsonfile = os.path.join(sys.path[0], filename)
+    jsonfile = os.path.join(sys.path[0], "deceptionlogic.json")
     try:
         with open(jsonfile, "r") as argfile:
             data = argfile.read()
@@ -76,6 +102,7 @@ if __name__ == "__main__":
         headers = {
             "X-DeceptionLogic-KeyId": keyId,
             "X-DeceptionLogic-SecretKey": SecretKey,
+            "User-Agent": user_agent,
         }
 
         response = requests.get(
@@ -100,6 +127,7 @@ if __name__ == "__main__":
         headers = {
             "X-DeceptionLogic-Token": token,
             "X-DeceptionLogic-Id": api_id,
+            "User-Agent": user_agent,
         }
 
         if "alertapi_run_time" in args:
