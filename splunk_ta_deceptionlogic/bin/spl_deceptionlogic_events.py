@@ -1,6 +1,7 @@
 """
 Send Deception Logic events to Splunk
 """
+
 import os
 import sys
 import json

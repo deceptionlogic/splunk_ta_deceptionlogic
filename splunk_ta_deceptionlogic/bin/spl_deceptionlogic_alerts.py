@@ -1,6 +1,7 @@
 """
 Send Deception Logic alerts to Splunk
 """
+
 import os
 import sys
 import json
